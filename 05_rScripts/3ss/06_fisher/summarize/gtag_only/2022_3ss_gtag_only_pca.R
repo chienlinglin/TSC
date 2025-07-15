@@ -46,6 +46,6 @@ grp_tbl <- data.frame(sample=colnames(data.tbl_f),
 pca_visual <- autoplot(object = pca.data,data=grp_tbl,colour="group") + theme_bw()
 
 #save
-setwd("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with with --mp10:4 -k 1 noncaonal_ss 1000/3ss/fisher/summarize/")
-ggsave("2022_3ss_gtag_only_pca.pdf",plot=pca_visual)
+setwd("/Users/angchu/Desktop/phD/TSC_codes/2025_plots/3ss")
+ggsave("2025_3ss_gtag_only_pca.pdf",plot=pca_visual, width = 5, height = 3)
 

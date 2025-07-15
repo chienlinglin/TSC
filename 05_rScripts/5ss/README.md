@@ -82,23 +82,5 @@
 - Odds ratio ≥ 2 or ≤ 0.5
 - FDR ≤ 0.05
 
-## 📊 Output Files
 
-### Primary Results
-- `candidate_variants_info.csv`: Comprehensive candidate variant information
-- `statistical_test_summary.csv`: Statistical testing results summary
-- `functional_annotation_table.csv`: Integrated functional annotations
-- `clinical_relevance_report.csv`: Clinical significance assessment
-
-### Quality Control
-- `sample_correlation_plots.pdf`: Inter-sample correlation analysis
-- `count_distribution_histograms.pdf`: Read count distributions
-- `splicing_efficiency_plots.pdf`: Splicing efficiency visualizations
-
-### Intermediate Files
-- `normalized_splice_counts/`: Processed splice junction counts
-- `statistical_tests/`: Individual statistical test results
-- `annotation_files/`: Splice site annotations and classifications
-
-
-**Last Updated**: January 2025
+**Last Updated**: July 2025

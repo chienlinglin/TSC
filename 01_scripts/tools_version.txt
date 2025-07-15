@@ -1,6 +1,0 @@
-trimmomatic 0.39
-hisat2 2.2.1
-samtools 1.15.1
-bedtools 2.30.0
-regtools 0.5.2
-fastx_toolkit 0.0.14

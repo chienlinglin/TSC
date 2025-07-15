@@ -1,4 +1,6 @@
 The sequencing alignment pipeline was followed by:
+
+
 [FASTQ]
   │
   └── alignment.sh → [SAM] + [Unaligned FASTQ] + [Mapping log]

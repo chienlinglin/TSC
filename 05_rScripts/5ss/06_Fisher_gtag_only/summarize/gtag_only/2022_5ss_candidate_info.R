@@ -1,7 +1,7 @@
 # Load library
 library(dplyr)
 library(stringr)
-library("Biostrings")
+library(Biostrings)
 library(readxl)
 library(tidyr)
 
@@ -17,10 +17,10 @@ cnu <- read.csv(file = "can_noncan_unspliced/gtag_only/2022_run3_run4_5ss_gtag_o
 wt_sum_3 <- (cnu$wt_sum>=100) + (cnu$wt_sum.1>=100)+(cnu$wt_sum.2>=100)
 mt_sum_3 <- (cnu$mt_sum>=100) + (cnu$mt_sum.1>=100)+(cnu$mt_sum.2>=100)
 cnu_f <- cbind(wt_sum_3,mt_sum_3,cnu)
-cnu_f <- su_f[,c(1,2,4,5,12,15,22,25,32,35)]
+cnu_f <- cnu_f[,c(1,2,4,5,12,15,22,25,32,35)]
 
 
-set1 <- su_f_reads %>% filter(wt_sum_3 == 3) %>% filter(mt_sum_3 == 3) %>% select(wt_sum_3,mt_sum_3,mt,wt)
+set1 <- cnu_f %>% filter(wt_sum_3 == 3) %>% filter(mt_sum_3 == 3) %>% select(wt_sum_3,mt_sum_3,mt,wt)
 
 colnames(set1)[1] <-"wt_reads_over_100"
 colnames(set1)[2] <-"mt_reads_over_100"
@@ -226,7 +226,7 @@ gtable5_1 <- gtable5 %>%
 write.csv(gtable5_1,file = "summarize/gtag_only/2025_5ss_candidates_info.csv")
 save(gtable5_1, file = "summarize/gtag_only/2025_5ss_candidates_1020.RData")
 
-##### pval and position of mt for splicing vulnerable region
+##### pval and position of mt for splicing vulnerable region  ####
 intron_f2 <- intron[,c(103,3,42,4,5,6,7,8)]
 colnames(intron_f2) <- c("name","origin","5/3ss","chr","ref_start","ref_end","ref","alt")
 exon_f2 <- exon[,c(4,6,68,7,8,9,11,12)]
@@ -258,65 +258,7 @@ setwd("~/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with
 #write.csv(final_pval,file = "2022_5ss_for_hotspot_0115.csv")
 write.csv(final_pval,file = "2025_5ss_for_hotspot_0115.csv")
 
-####### cosmic intergration #####
 
-setwd("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with with --mp10:4 -k 1 noncaonal_ss 1000/summary/")
-tsc_5ss <- read.csv("2022_5ss_candidates_info.csv")
-tsc_3ss <- read.csv("2022_3ss_candidates_info.csv")
-
-old_cosmic_5ss <- read.csv("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/TSC_cosmic/hi_5ss_candidates_0702_freq_cosmic.csv")
-old_cosmic_3ss <- read.csv("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/TSC_cosmic/hi_3ss_candidates_0702_freq_cosmic.csv")
-
-old_cosmic_5ss <- old_cosmic_5ss[,c(2,31,37,38)]
-old_cosmic_3ss <- old_cosmic_3ss[,c(2,31,33,34)]
-
-merge_5ss_cosmic <- merge(tsc_5ss,old_cosmic_5ss,by="mt")
-merge_3ss_cosmic <- merge(tsc_3ss,old_cosmic_3ss,by="mt")
-setwd("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with with --mp10:4 -k 1 noncaonal_ss 1000/summary/")
-# write.csv(merge_5ss_cosmic[,c(1:31,33:37)],"merge_5ss_cosmic.csv")
-# write.csv(merge_3ss_cosmic[,c(1:31,33:37)],"merge_3ss_cosmic.csv")
-# merge_5ss_cosmic <- read.csv("merge_5ss_cosmic.csv")
-# merge_3ss_cosmic <- read.csv("merge_3ss_cosmic.csv")
-write.csv(merge_5ss_cosmic[,c(1:31,33:37)],"2025_merge_5ss_cosmic.csv")
-write.csv(merge_3ss_cosmic[,c(1:31,33:37)],"2025_merge_3ss_cosmic.csv")
-merge_5ss_cosmic <- read.csv("2025_merge_5ss_cosmic.csv")
-merge_3ss_cosmic <- read.csv("2025_merge_3ss_cosmic.csv")
-
-
-setwd("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with with --mp10:4 -k 1 noncaonal_ss 1000/freq_taiwan_biobank/")
-
-tsc2 <- read_xlsx("tsc2.xlsx",sheet="biobank")
-tsc1 <- read_xlsx("tsc1.xlsx",sheet="biobank")
-
-
-biobank_freq <- rbind(tsc1[1:7],tsc2)
-colnames(biobank_freq) <- c("biobank_chr","biobank_pos","biobank_ID",
-                            "biobank_ref","biobank_individuals",
-                            "biobank_freq","biobank_gene")
-
-merge_5ss_cosmic_biobank <-  merge(merge_5ss_cosmic,biobank_freq,by.x="mut_start.1",by.y="biobank_pos",all.x=T)
-merge_3ss_cosmic_biobank <-  merge(merge_3ss_cosmic,biobank_freq,by.x="mut_start.1",by.y="biobank_pos",all.x=T)
-
-# write.csv(merge_5ss_cosmic_biobank[,c(2,3,4:32,35:43,33,34)],"merge_5ss_cosmic_biobank.csv")
-# write.csv(merge_3ss_cosmic_biobank[,c(2,3,4:32,35:43,33,34)],"merge_3ss_cosmic_biobank.csv")
-write.csv(merge_5ss_cosmic_biobank[,c(2,3,4:32,35:43,33,34)],"2025_merge_5ss_cosmic_biobank.csv")
-write.csv(merge_3ss_cosmic_biobank[,c(2,3,4:32,35:43,33,34)],"2025_merge_3ss_cosmic_biobank.csv")
-
-###########################check intronic barcode affected ###########################
-merge_5ss_cosmic_biobank <- read.csv("merge_5ss_cosmic_biobank.csv")
-merge_3ss_cosmic_biobank <- read.csv("merge_3ss_cosmic_biobank.csv")
-
-merge_all_cosmic_biobank <- rbind(merge_5ss_cosmic_biobank[,c(1:3,41)],merge_3ss_cosmic_biobank[,c(1:3,41)])
-merge_sig_cosmic_biobank <- merge_all_cosmic_biobank[which(str_detect(merge_all_cosmic_biobank$`sig`,pattern = "sig")),]
-uniq_merge_sig_cosmic_biobank <- merge_sig_cosmic_biobank[!duplicated(merge_sig_cosmic_biobank$mt),]
-
-intron_info <- read.csv("/Users/angchu/Desktop/phD/Rotation/2/TSC alignment/re_aligment/20220318_modified_with with --mp10:4 -k 1 noncaonal_ss 1000/5ss/fisher/hi_3ss_5ss_intron_fixed_final_add_GT_AG 2.csv")
-intron_info <- intron_info[,c(2,97,50,66)]
-intron_sig <- merge(uniq_merge_sig_cosmic_biobank,intron_info,by.x="mt",by.y="new_name",all.x=TRUE)
-
-
-# 
-# write.csv(intron_sig,"intron_sig.csv",col.names = NULL)
 # 
 
 

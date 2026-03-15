@@ -18,12 +18,10 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
    - Filters reads with mapping quality ≥ Q60 using `samtools`
    - Extracts paired-end reads
    - Splits BAM reads by variant position (`mt_info` vs `no_mt_info`)
-
-3. **Splicing Analysis**
    - Classifies reads as spliced or unspliced from BAM files
-   - Generates count tables using `bamcount.sh`
+   - Generates count tables
 
-4. **Junction Analysis**
+3. **Junction Analysis** (located in 04_regtools_juncbed/)
    - Extracts splice junctions using `regtools`
    - Outputs junction BED file with functional annotations
 

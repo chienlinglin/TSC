@@ -7,20 +7,20 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
 
 ### 🧩 Pipeline Steps Summary
 
-1. **alignment.sh**
+1. **alignment.sh** (located in 02_alignment/)
    - Aligns raw FASTQ reads to a reference genome using HISAT2.
    - Outputs:
      - Aligned SAM file
      - Unaligned FASTQ
      - Mapping statistics log
 
-2. **bamcount.sh**
+2. **bamcount.sh** (located in 03_bedtools_bamcount/)
    - Filters reads with mapping quality ≥ Q60 using `samtools`
    - Extracts paired-end reads
-   - Splits BAM by mitochondrial info (`mt_info` vs `no_mt_info`)
+   - Splits BAM reads by variant position (`mt_info` vs `no_mt_info`)
 
 3. **Splicing Analysis**
-   - Classifies reads as spliced or unspliced from `no_mt_info` BAM
+   - Classifies reads as spliced or unspliced from BAM files
    - Generates count tables using `bamcount.sh`
 
 4. **Junction Analysis**

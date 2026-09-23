@@ -12,7 +12,7 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
    - Removes Nextera adapter sequences and low-quality bases.
 
 1. **alignment.sh** (located in `02_alignment/`)
-   - Aligns raw FASTQ reads to a reference genome using HISAT2.
+   - Aligns raw FASTQ reads to a reference genome using `HISAT2`.
    - Outputs:
      - Aligned SAM file
      - Unaligned FASTQ

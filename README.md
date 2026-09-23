@@ -51,11 +51,7 @@ outputPath=${projectPath}3ss_qc/
 Run the scripts:
 
 ```bash
-bash 01_trimmomatic/20191122_3ss_trimmomatic.sh
-```
-or
-```bash
-bash 01_trimmomatic/20191122_5ss_trimmomatic.sh
+bash <script_name>.sh
 ```
 
 ### 🛠️ Software & Tool Versions

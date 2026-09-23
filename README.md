@@ -13,10 +13,6 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
 
 1. **alignment.sh** (located in `02_alignment/`)
    - Aligns raw FASTQ reads to a reference genome using `HISAT2`.
-   - Outputs:
-     - Aligned SAM file
-     - Unaligned FASTQ
-     - Mapping statistics log
 
 2. **bamcount.sh** (located in `03_bedtools_bamcount/`)
    - Filters reads with mapping quality ≥ Q60 using `samtools`

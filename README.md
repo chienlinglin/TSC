@@ -25,6 +25,10 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
    - Extracts splice junctions using `regtools`
    - Outputs junction BED file with functional annotations
 
+3. **R Analysis Scripts** (located in 05_rScripts/)
+   - Performs downstream statistical analyses and visualization for the 3′SS and 5′SS datasets.
+   - Detailed descriptions and instructions for the R scripts are provided in the README files within the corresponding 3′SS and 5′SS subdirectories.
+
 ---
 
 ### 🛠️ Software & Tool Versions

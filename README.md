@@ -48,8 +48,8 @@ projectPath=/path/to/project/
 readPath=${projectPath}3ss_raw/
 outputPath=${projectPath}3ss_qc/
 ```
-Run the scripts:
-
+Input filenames are not passed explicitly on the command line. Each script automatically identifies input files from the configured input directory using predefined filename patterns.
+Run the scripts using:
 ```bash
 bash <script_name>.sh
 ```

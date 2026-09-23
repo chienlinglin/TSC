@@ -7,6 +7,10 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
 
 ### 🧩 Pipeline Steps Summary
 
+0. **Trimmomatic** (located in `01_trimmomatic/`)
+   - Performs quality control and adapter trimming on paired-end FASTQ files using `Trimmomatic`.
+   - Removes Nextera adapter sequences and low-quality bases.
+
 1. **alignment.sh** (located in 02_alignment/)
    - Aligns raw FASTQ reads to a reference genome using HISAT2.
    - Outputs:

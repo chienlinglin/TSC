@@ -2,6 +2,9 @@
 
 This pipeline processes FASTQ files through alignment, filtering, and read classification steps, producing various BAM and count outputs.
 
+Separate shell scripts are provided for the 3′ splice-site (3′SS) and 5′ splice-site (5′SS) reporter libraries. 
+The overall analysis workflow is the same for both libraries, but the scripts use library-specific input paths, reference sequences/indexes, and downstream analysis files. 
+Therefore, 3′SS and 5′SS scripts should be applied only to data generated from their corresponding libraries.
 
 ---
 
@@ -30,6 +33,14 @@ This pipeline processes FASTQ files through alignment, filtering, and read class
    - Detailed descriptions and instructions for the R scripts are provided in the README files within the corresponding 3′SS and 5′SS subdirectories.
 
 ---
+
+### Running the shell scripts
+
+Shell scripts can be run from the command line using:
+
+```bash
+sh <script_name>.sh
+```
 
 ### 🛠️ Software & Tool Versions
 

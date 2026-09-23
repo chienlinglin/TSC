@@ -39,7 +39,7 @@ Therefore, 3′SS and 5′SS scripts should be applied only to data generated fr
 Shell scripts can be run from the command line using:
 
 ```bash
-sh <script_name>.sh
+bash <script_name>.sh
 ```
 
 ### 🛠️ Software & Tool Versions

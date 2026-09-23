@@ -40,10 +40,22 @@ Therefore, 3′SS and 5′SS scripts should be applied only to data generated fr
 
 ### Running the shell scripts
 
-Shell scripts can be run from the command line using:
+The shell scripts use predefined project, input, and output directories specified at the beginning of each script. 
+Before running a script, users should modify the path variables according to their local directory structure. For example:
 
 ```bash
-bash <script_name>.sh
+projectPath=/path/to/project/
+readPath=${projectPath}3ss_raw/
+outputPath=${projectPath}3ss_qc/
+```
+Run the scripts:
+
+```bash
+bash 01_trimmomatic/20191122_3ss_trimmomatic.sh
+```
+or
+```bash
+bash 01_trimmomatic/20191122_5ss_trimmomatic.sh
 ```
 
 ### 🛠️ Software & Tool Versions
